@@ -11,18 +11,26 @@ Window.clearcolor = (100/255, 50/255, 200/255, 1)
 Window.title = ('Calculator')
 
 class MyApp(App):
-    def num():
-        
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.board = Label(text = '')
+        self.keypad = GridLayout(rows = 3, cols = 3)
+        self.num_list = []
+        for i in range(1, 10):
+            self.btn = Button(text = f"{i}")
+            self.num_list.append(self.btn)
+        for btn in self.num_list:
+            self.keypad.add_widget(btn)
+
+
+    def num_input(self):
+        self.board.text = 
         
     def build(self):
-        calc = BoxLayout(orientation = 'vertical')
-        board = Label(text = '')
-        calc.add_widget(board)
-        keypad = GridLayout(rows = 3, cols = 3)
-        for i in range(1, 10):
-            btn = Button(text = f"{i}")
-            keypad.add_widget(btn)
-        calc.add_widget(keypad)
+        calc = BoxLayout(orientation = 'vertical')  
+        calc.add_widget(self.board)
+        
+        calc.add_widget(self.keypad)
         return calc
         
         
