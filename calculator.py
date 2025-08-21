@@ -20,6 +20,8 @@ class MyApp(App):
         def signs_press(instance):
             if self.board.text and self.board.text[-1] not in ['+', '-', '=']:
                 self.board.text += instance.text
+        def c_press(instance):
+            self.board.text = ''
         plas = Button(text = '+')
         plas.bind(on_press = signs_press)
         self.signs = BoxLayout(orientation = 'vertical')
@@ -30,6 +32,9 @@ class MyApp(App):
         equal = Button(text = '=')
         equal.bind(on_press = equal_press)
         self.signs.add_widget(equal)
+        c = Button(text = 'c')
+        c.bind(on_press = c_press)
+        self.signs.add_widget(c)
         def press(instance):
             self.board.text += instance.text
         for i in range(1, 10):
